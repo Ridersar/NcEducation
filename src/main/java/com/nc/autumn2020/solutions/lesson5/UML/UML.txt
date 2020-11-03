@@ -1,0 +1,37 @@
+@startuml
+skinparam classAttributeIconSize 0
+abstract class Storage {
+ -name : String
+ -capacityWeight : double
+ -capacityQuantity : int
+ -masFruits : Fruit[]
+ -weightFruits : double = 0.0
+ -quantityFruits : int = 0
+ +put(fruit : Fruit)
+ +take()
+ +info()
+}
+Storage <|-- PlasticÑontainer
+Storage <|-- FruitBasket
+
+
+abstract class Fruit {
+ -name : String
+ -weight : double
+ -calorificValue : int
+ +getName()
+ +getWeight()
+ +getCalorificValue()
+}
+interface Eatable {
+ +eat()
+}
+Eatable <|.. Fruit
+Fruit <|-- Apple
+Fruit <|-- Orange
+
+
+class Human {
+ +eat(fruit : Fruit)
+}
+@enduml
